@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 interface ScrambleTextProps {
   text: string;
@@ -23,26 +23,7 @@ export default function ScrambleText({
   const originalTextRef = useRef<string>(text);
   const prevHoverState = useRef<boolean>(hoverToActivate);
   
-  // Update the original text ref if text prop changes
-  useEffect(() => {
-    originalTextRef.current = text;
-    if (!isScrambling) {
-      setDisplayText(text);
-    }
-  }, [text, isScrambling]);
-  
-  // Effect to trigger scramble when hoverToActivate changes
-  useEffect(() => {
-    // Trigger scramble when hover state becomes true
-    if (hoverToActivate && !prevHoverState.current && !isScrambling) {
-      setIsScrambling(true);
-      scrambleText();
-    }
-    
-    prevHoverState.current = hoverToActivate;
-  }, [hoverToActivate, isScrambling]);
-  
-  const scrambleText = () => {
+  const scrambleText = useCallback(() => {
     let iteration = 0;
     const maxIterations = 10;
     
@@ -80,7 +61,26 @@ export default function ScrambleText({
       
       iteration += 1;
     }, speed);
-  };
+  }, [randomChars, speed]);
+  
+  // Update the original text ref if text prop changes
+  useEffect(() => {
+    originalTextRef.current = text;
+    if (!isScrambling) {
+      setDisplayText(text);
+    }
+  }, [text, isScrambling]);
+  
+  // Effect to trigger scramble when hoverToActivate changes
+  useEffect(() => {
+    // Trigger scramble when hover state becomes true
+    if (hoverToActivate && !prevHoverState.current && !isScrambling) {
+      setIsScrambling(true);
+      scrambleText();
+    }
+    
+    prevHoverState.current = hoverToActivate;
+  }, [hoverToActivate, isScrambling, scrambleText]);
   
   // Handle mouseEnter for direct hover on the text (fallback behavior)
   const handleMouseEnter = () => {

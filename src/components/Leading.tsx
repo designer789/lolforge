@@ -14,9 +14,51 @@ type LottieAnimationData = {
   h: number;
   nm: string;
   ddd: number;
-  assets: any[];
-  layers: any[];
-  markers: any[];
+  assets: Array<{
+    id: string;
+    w?: number;
+    h?: number;
+    t?: string;
+    u?: string;
+    p?: string;
+    e?: number;
+    layers?: Array<{
+      ty: number;
+      sc: string;
+      refId: string;
+      ks: {
+        p: { a: number; k: number[] };
+        a: { a: number; k: number[] };
+        s: { a: number; k: number[] };
+        r: { a: number; k: number[] };
+        o: { a: number; k: number[] };
+      };
+      ip: number;
+      st: number;
+      op: number;
+      sr: number;
+      bm: number;
+    }>;
+  }>;
+  layers: Array<{
+    ddd: number;
+    ind: number;
+    ty: number;
+    nm: string;
+    sr: number;
+    ks: Record<string, unknown>;
+    ao: number;
+    shapes?: Array<unknown>;
+    ip: number;
+    op: number;
+    st: number;
+    bm: number;
+  }>;
+  markers: Array<{
+    cm: string;
+    dr: number;
+    tm: number;
+  }>;
   props: Record<string, unknown>;
 };
 
