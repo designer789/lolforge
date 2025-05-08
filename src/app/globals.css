@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #222222;
+  --foreground: #ffffff;
+  --theme-color: #ebd57c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-theme: var(--theme-color);
+  --font-heading: var(--font-press-start);
+  --font-text: var(--font-roboto-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +21,102 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Adjust based on your header height */
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-text, 'Roboto Mono', monospace);
+  cursor: url('/default.png'), auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading, 'Press Start 2P', cursive);
+  color: var(--theme-color);
+}
+
+/* Animation utility classes */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slideLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slideRight 0.8s ease-out forwards;
+}
+
+.animate-zoom-in {
+  animation: zoomIn 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(-30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Custom cursor styles */
+* {
+  cursor: url('/default.png'), auto !important;
+}
+
+a, button, 
+[role="button"],
+[type="button"],
+[type="submit"],
+[type="reset"],
+select,
+input[type="radio"],
+input[type="checkbox"],
+.cursor-pointer,
+.cursor-pointer *,
+header nav a,
+header nav a *,
+header button,
+header button * {
+  cursor: url('/pointer.png'), pointer !important;
+}
+
+/* Ensure cursor visibility during text selection */
+::selection {
+  background-color: var(--theme-color);
+  color: var(--background);
 }
