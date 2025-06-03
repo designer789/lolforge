@@ -119,7 +119,7 @@ export default function Hero() {
                 onMouseLeave={() => setHoveredButton(null)}
               >
                 <Link 
-                  href="#" 
+                  href="https://dexscreener.com/ethereum/0x6a0e7d016abe9cc171906864a4a4a7bf2d990b0b" target="_blank" rel="noopener noreferrer"
                   className="bg-[#ebd57c] hover:bg-[#d5c06c] text-[#222222] px-5 sm:px-8 py-3 sm:py-4 font-medium transition-colors inline-flex justify-center text-base sm:text-lg relative z-10 w-full sm:w-auto border border-[#ebd57c] uppercase tracking-wider group-hover:translate-x-1 group-hover:translate-y-1 sm:group-hover:translate-x-2 sm:group-hover:translate-y-2 transition-transform duration-300 ease-in-out"
                 >
                   <span className="mr-2">→</span>
