@@ -107,10 +107,10 @@ export default function Header() {
             <NavLink href="https://t.me/lol_Forge" className="text-white hover:text-[#ebd57c] transition-colors text-base">
               Telegram
             </NavLink>
-            <NavLink href="#" className="text-white hover:text-[#ebd57c] transition-colors text-base">
+            <NavLink href="https://www.dextools.io/app/en/ether/pair-explorer/0x6a0e7d016abe9cc171906864a4a4a7bf2d990b0b?t=1748946343635" className="text-white hover:text-[#ebd57c] transition-colors text-base">
               DEXTools
             </NavLink>
-            <NavLink href="#" className="text-white hover:text-[#ebd57c] transition-colors text-base">
+            <NavLink href="https://dexscreener.com/ethereum/0x6a0e7d016abe9cc171906864a4a4a7bf2d990b0b" className="text-white hover:text-[#ebd57c] transition-colors text-base">
               DEXScreener
             </NavLink>
           </nav>
